@@ -1,0 +1,52 @@
+$headerheight: 50px;
+$sidebarwidth: 20%;
+$commonchatroomwidth: 80%;
+$formmessageheight: 80px;
+
+header {
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: $headerheight;
+  padding: 15px 20px;
+  background: #333;
+  color: #FFF;
+  h1 {
+    float: left;
+    font-size: 17px;
+  }
+  .dropdown {
+    float: right;
+  }
+}
+
+.common-chatroom,
+.registered-users {
+  position: absolute;
+  top: $headerheight; bottom: 0;
+  padding: 20px;
+}
+.common-chatroom {
+  width: $commonchatroomwidth;
+  left: 0;
+  #form-message {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: $formmessageheight;
+    padding: 20px;
+  }
+  #messages {
+    position: absolute;
+    top: 0;
+    right: 0; left: 0;
+    bottom: $formmessageheight;
+    max-width: inherit;
+    overflow-y: auto;
+    padding: 20px;
+  }
+}
+.registered-users {
+  width: $sidebarwidth;
+  right: 0;
+  background: #fafafa;
+}

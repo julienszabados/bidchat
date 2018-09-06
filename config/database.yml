@@ -11,7 +11,9 @@ default: &default
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: bidchat
+  username: julien
+  password: "_zk:0;zbhwYazea4!9|^3vgcU|MeBly"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

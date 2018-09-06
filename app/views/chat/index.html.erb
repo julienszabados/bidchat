@@ -1,0 +1,47 @@
+<header>
+  <h1>Weasel</h1>
+  <div class="ui dropdown">
+    <div class="text"><%= current_user.full_name %></div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">
+        <span class="description">ctrl + o</span>
+        Apparaître hors-ligne
+      </div>
+      <div class="item">
+        <span class="description">ctrl + p</span>
+        Pause clope
+      </div>
+      <div class="divider"></div>
+      <div class="item">Mon compte</div>
+      <div class="item">
+        <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </div>    
+</header>
+<div class="common-chatroom">
+  <div id="messages" class="ui comments">
+    
+  </div>
+  <div id="form-message" class="ui rply form">
+    <div class="field">
+      <input type="text" id="message" placeholder="Votre message" />
+    </div>
+  </div>
+</div>
+<div class="registered-users">
+  <h3>Les fouines</h3>
+  <div class="ui items">
+  <% @users.each do |u| %>
+    <div class="item">
+      <a class="ui tiny image">
+        <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+      </a>
+      <div class="middle aligned content">
+        <%= u.full_name %>
+      </div>
+    </div>    
+  <% end %>
+  </div>
+</div>
