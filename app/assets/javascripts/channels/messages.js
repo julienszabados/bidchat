@@ -14,11 +14,14 @@ App.messages = App.cable.subscriptions.create("MessagesChannel", {
    
   },
   received: function(data){
-    var $messages = $('#messages');
-    $messages.append(data.message);      
-    $messages[0].scrollTop = $messages[0].scrollHeight
+    this.appendMessage(data);
   },
   speak: function(message) {
     this.perform('speak', {message: message})
+  },
+  appendMessage: function(data) {
+    var $messages = $('#messages');
+    $messages.append(data.message).find('.message').last().transition('fade up');
+    $messages[0].scrollTop = $messages[0].scrollHeight    
   }
 });

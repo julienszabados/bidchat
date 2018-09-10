@@ -1,47 +1,70 @@
-<header>
-  <h1>Weasel</h1>
-  <div class="ui dropdown">
-    <div class="text"><%= current_user.full_name %></div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
+<section id="content">
+  <header>
+    <h1>Weasel</h1>
+    <div class="items-right">
       <div class="item">
-        <span class="description">ctrl + o</span>
-        Apparaître hors-ligne
-      </div>
-      <div class="item">
-        <span class="description">ctrl + p</span>
-        Pause clope
-      </div>
-      <div class="divider"></div>
-      <div class="item">Mon compte</div>
-      <div class="item">
-        <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+        <div class="ui dropdown">
+          <div class="text"><%= current_user.full_name %></div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">
+              <span class="description">ctrl + o</span>
+              Apparaître hors-ligne
+            </div>
+            <div class="item">
+              <span class="description">ctrl + p</span>
+              Pause clope
+            </div>
+            <div class="divider"></div>
+            <div class="item">Mon compte</div>
+            <div class="item">
+              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>    
-</header>
-<div class="common-chatroom">
-  <div id="messages" class="ui comments">
-    
-  </div>
-  <div id="form-message" class="ui rply form">
-    <div class="field">
-      <input type="text" id="message" placeholder="Votre message" />
-    </div>
-  </div>
-</div>
-<div class="registered-users">
-  <h3>Les fouines</h3>
-  <div class="ui items">
-  <% @users.each do |u| %>
-    <div class="item">
-      <a class="ui tiny image">
-        <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
-      </a>
-      <div class="middle aligned content">
-        <%= u.full_name %>
-      </div>
+  </header>
+  <section class="sidebar-left">
+    <div class="search-container">
+      <div class="ui transparent input left icon inverted">
+        <input type="text" id="search" placeholder="Rechercher...">
+        <i class="search icon"></i>        
+      </div>            
     </div>    
-  <% end %>
-  </div>
-</div>
+    <div class="users">
+      <% @users.each do |u| %>
+        <div class="user">
+          <a href="#">
+            <div class="avatar">
+              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+            </div>
+            <div class="name">
+              <%= u.full_name %>
+            </div>
+          </a>
+        </div>    
+      <% end %>
+    </div>
+    <div class="navigation">
+      <ul>
+        <li class="selected">
+          <i class="users icon"></i>
+        </li>
+        <li>
+          <i class="comments icon"></i>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="chat-room-container">
+    <div id="messages">
+      
+    </div>
+    <div id="form-message">
+      <div class="ui transparent input">
+        <input type="text" id="message" placeholder="Écrivez votre message...">
+      </div>      
+    </div>
+  </section>
+</section>

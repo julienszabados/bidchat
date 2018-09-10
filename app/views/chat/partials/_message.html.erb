@@ -1,5 +1,4 @@
-<% if is_new_message %>
-<div class="comment">
+<div class="message" style="display: none;">
   <a class="avatar">
     <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
   </a>  
@@ -13,8 +12,3 @@
     </div>
   </div>
 </div>
-<% else %>
-  <div class="text">
-    <%= message %>
-  </div>
-<% end %>

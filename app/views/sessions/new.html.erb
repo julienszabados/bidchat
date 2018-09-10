@@ -1,13 +1,23 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group has-feedback has-feedback-left">
-    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse email" %>
+<section id="session-form-container">
+  <div class="session-form-header">
+    <h1>Weasel</h1>
+    <p>Le chat des fouines</p>
   </div>
-  <div class="form-group has-feedback has-feedback-left">
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn bg-pink-400 btn-block legitRipple">
-      CONNEXION
-    </button>
-  </div>
-<% end %>  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class:"ui large form"}) do |f| %>
+    <div class="ui stacked segment">
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse email" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
+        </div>
+      </div>
+      <button class="ui fluid large teal submit button">Go !</button>
+    </div>
+  <% end %>
+</section>
