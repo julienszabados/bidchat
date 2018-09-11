@@ -1,0 +1,29 @@
+<%
+  classes = ["room"]
+  classes.push("displayed") if displayed
+%>
+<div class="<%= classes.join(" ") %>" data-room="<%= room.id %>">
+  <div class="room-feed room-scrolled-container">
+    <% if room.persist? %>
+      <% room.messages.each do |message| %>
+        <%= render partial: "chat/partials/message", locals: {message: message} %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="room-infos">
+    <div class="head">
+      <div class="avatar">
+        <div class="avatar-letter"><%= room.title[0] %></div>
+      </div>
+      <div class="texts-infos">
+        <div class="title"><%= room.title %></div>
+        <small><%= room.description %></small>
+      </div>
+    </div>
+  </div>
+  <div class="room-form">
+    <div class="ui transparent input">
+      <input type="text" placeholder="Écrivez votre message...">
+    </div>      
+  </div>
+</div>

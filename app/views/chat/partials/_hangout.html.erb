@@ -1,0 +1,36 @@
+<%
+  classes = ["hangout"]
+  classes.push("opened")     if opened
+  classes.push("closed")     unless opened
+  classes.push("highlighted") if highlighted
+%>
+<div class="<%= classes.join(" ") %>" data-room="<%= recipient.id %>">
+  <div class="head">
+    <div class="recipient">
+      <i class="icon comment alternate"></i>
+      <span class="name"><%= recipient.full_name %></span>
+    </div>
+    <div class="actions">
+      <ul>
+        <li><button><i class="icon window minimize"></i></button></li>
+        <li><button><i class="icon times"></i></button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="hangout-feed">
+    <div class="content room-scrolled-container">
+      <div class="room-feed">
+      </div>
+    </div>
+    <div class="footer">
+      <div class="actions-left">
+        <button><i class="icon smile"></i></button>
+      </div>
+      <div class="form-message room-form">
+        <div class="ui transparent input">
+          <input type="text" placeholder="Écrivez votre message...">
+        </div>      
+      </div>
+    </div>
+  </div>
+</div>

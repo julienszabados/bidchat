@@ -25,46 +25,102 @@
       </div>
     </div>
   </header>
-  <section class="sidebar-left">
-    <div class="search-container">
-      <div class="ui transparent input left icon inverted">
-        <input type="text" id="search" placeholder="Rechercher...">
-        <i class="search icon"></i>        
-      </div>            
-    </div>    
-    <div class="users">
-      <% @users.each do |u| %>
-        <div class="user">
-          <a href="#">
-            <div class="avatar">
-              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+  <section class="content-inner">
+    <section class="sidebar-left">
+      <div class="sidebar-content">
+        <div id="subscribed-rooms" class="tab" style="display:block;">
+          <div class="tab-title">
+            Conversation groupées
+          </div>
+          <div class="search-container">
+            <div class="ui transparent input left icon inverted">
+              <input type="text" id="search" placeholder="Rechercher une room...">
+              <i class="search icon"></i>        
             </div>
-            <div class="name">
-              <%= u.full_name %>
+          </div>
+          <div class="items">
+            <% @chat_rooms.each_with_index do |chat_room, index| %>
+              <div class="item <%= 'selected' if index == 0 %>" data-room-id="<%= chat_room.id %>">
+                <div class="avatar">
+                  <div class="avatar-letter"><%= chat_room.title[0] %></div>
+                </div>
+                <div class="label">
+                  <p><%= chat_room.title %></p>
+                  <small><%= chat_room.description %></small>
+                </div>
+              </div>    
+            <% end %>
+          </div>        
+        </div>
+        <div id="users" class="tab">
+          <div class="tab-title">
+            Salariés
+          </div>
+          <div class="search-container">
+            <div class="ui transparent input left icon inverted">
+              <input type="text" id="search" placeholder="Rechercher un collègue...">
+              <i class="search icon"></i>        
+            </div>            
+          </div>
+          <div class="items">
+            <% @users.each do |u| %>
+              <div class="item">
+                <a href="#">
+                  <div class="avatar">
+                    <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+                  </div>
+                  <div class="label">
+                    <p><%= u.full_name %></p>
+                  </div>
+                </a>
+              </div>    
+            <% end %>
+          </div>
+        </div>
+        <div id="user-messages" class="tab">
+          <div class="tab-title">
+            Conversations
+          </div>
+          <div class="search-container">
+            <div class="ui transparent input left icon inverted">
+              <input type="text" id="search" placeholder="Rechercher une discussion...">
+              <i class="search icon"></i>        
             </div>
-          </a>
-        </div>    
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-navigation">
+        <ul>
+          <li class="selected" data-tab="subscribed-rooms">
+            <i class="th list icon"></i>
+          </li>
+          <li data-tab="users">
+            <i class="users icon"></i>
+          </li>
+          <li data-tab="user-messages">
+            <i class="comments icon"></i>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="chat-room-container">
+      <% @chat_rooms.each do |room| %>
+        <%= render partial: "chat/partials/room", locals: {room: room, displayed: (room.id == 1)} %>
       <% end %>
-    </div>
-    <div class="navigation">
-      <ul>
-        <li class="selected">
-          <i class="users icon"></i>
-        </li>
-        <li>
-          <i class="comments icon"></i>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section class="chat-room-container">
-    <div id="messages">
-      
-    </div>
-    <div id="form-message">
-      <div class="ui transparent input">
-        <input type="text" id="message" placeholder="Écrivez votre message...">
-      </div>      
-    </div>
+    </section>    
   </section>
 </section>
+<!--
+<div class="hangout-container">
+  <%= render partial: "chat/partials/hangout", locals: {
+    recipient: User.first,
+    opened: false,
+    highlighted: true
+  } %>
+  <%= render partial: "chat/partials/hangout", locals: {
+    recipient: User.last,
+    opened: true,
+    highlighted: false
+  } %>
+</div>
+-->

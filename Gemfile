@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.3'
+ruby '2.5.1'
 
 gem 'rails', '~> 5.2.1'
 gem 'sqlite3'
@@ -16,6 +16,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'redis'
+gem 'awesome_print'                   # Console print pretty Hash
+gem 'carrierwave'                     # File Uploader
+gem 'mini_magick'                     # Image Processing
+gem 'settingslogic'                   # Add config variables
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

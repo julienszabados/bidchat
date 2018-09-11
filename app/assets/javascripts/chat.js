@@ -15,3 +15,6 @@
 //= require_tree ./channels
 //
 //= require chat/plugins
+//= require chat/app
+//
+//= require chat/controller

@@ -1,0 +1,115 @@
+.hangout-container {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  .hangout {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 20px;
+    width: 300px;
+    &.closed {
+      .hangout-feed {
+        display: none;
+      }
+    }
+    &.highlighted {
+      .head {
+        @include animatedGradient(2s);
+      }
+    }
+    .head {
+      background: #25323f;
+      color: #FFF;
+      border-radius: 5px 5px 0 0;
+      padding: 10px 15px;
+      cursor: pointer;
+      .recipient {
+        float: left;
+      }
+      .actions {
+        float: right;
+        ul {
+          padding: 0;
+          margin: 0;
+          &:after {
+            content: "";
+            display: block;
+            clear: both;
+          }
+          li {
+            float: left;
+            list-style: none;
+            margin-left: 8px;
+            button {
+              color: #FFF;
+              background: none;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              margin: 0;
+              padding: 0;
+              i {
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+      &:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    }
+    .hangout-feed {
+      > .content {
+        padding: 15px;
+        background: #f5f9fd;
+        max-height: 300px;
+        min-height: 70px;
+        overflow-y: auto;
+        box-shadow: inset 5px 5px 10px rgba(150,150,150,0.1);
+      }
+      > .message {
+      }
+      > .footer {
+        position: relative;
+        display: table;
+        width: 100%;
+        z-index: 1;
+        background: #FFF;
+        box-shadow: -5px -5px 10px rgba(150,150,150,0.1);
+        padding: 10px;
+        .actions-left {
+          display: table-cell;
+          vertical-align: middle;
+          margin-right: 10px;
+          width: 30px;
+          button {
+            background: none;
+            outline: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+            i {
+              margin: 0;
+            }
+          }
+        }
+        .form-message {
+          display: table-cell;
+          vertical-align: middle;
+          .input {
+            width: 100%;
+          }
+        }
+        &:after {
+          content: "";
+          display: block;
+          clear: both;
+        }
+      }
+    }
+  }  
+}

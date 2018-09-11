@@ -1,14 +1,14 @@
-<div class="message" style="display: none;">
+<div class="message <%= "self-message" if message.user == current_user %>" style="display: none;">
   <a class="avatar">
     <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
   </a>  
   <div class="content">
-    <a class="author"><%= user.full_name %></a>
+    <a class="author"><%= message.user.full_name %></a>
     <div class="metadata">
-      <span class="date"><%= Time.now.strftime('%H:%M:%S') %></span>
+      <span class="date"><%= message.created_at&.strftime('%H:%M:%S') || Time.now.strftime('%H:%M:%S') %></span>
     </div>
     <div class="text">
-      <%= message %>
+      <%= message.content %>
     </div>
   </div>
 </div>
